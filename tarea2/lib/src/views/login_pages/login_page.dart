@@ -4,7 +4,9 @@ import 'package:tarea2/src/widgets/texto.dart';
 import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({super.key});
+  LoginPage({super.key}){
+    usuarios[0].contra = '20212001077';
+  }
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -77,12 +79,17 @@ class _LoginPageState extends State<LoginPage> {
                 return;
               }
 
-              usuarios.forEach((usuario){
-                if (usuario.email == emailController.text.toLowerCase() &&
+              for (Usuario usuario in usuarios) {
+                print('Email: ' + (usuario.email == emailController.text.toLowerCase()).toString());
+                print('pass: '+ (usuario.compararContra(contraController.text)).toString());
+               if (usuario.email == emailController.text.toLowerCase() &&
                     usuario.compararContra(contraController.text)) {
-                  context.go('/Home');
+                    context.go('/home');
+                    print('datos correctos');
+                  }
+                  print('en el for');
                 }
-              });
+              
             },
             child: const Text('Entrar'),
           ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tarea2/data/user.dart';
 import 'package:tarea2/src/views/login_pages/login_page.dart';
 import 'package:tarea2/src/views/login_pages/registro_page.dart';
 
@@ -13,10 +12,11 @@ class LoginMainPage extends StatefulWidget {
 class _LoginMainPageState extends State<LoginMainPage> {
   final PageController pageController = PageController(initialPage: 0);
   int indice = 0;
+  
 
   @override
   Widget build(BuildContext context) {
-    usuarios[0].contra = '20212001077';
+    
     return Scaffold(
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),

@@ -19,7 +19,7 @@ class Usuario{
 }
 
 List<Usuario> usuarios = [
-  Usuario(id: '1', name: 'Mahonri Flores', email: 'Mahonri.Flores@unah.hn', phone: '9999-9999')
+  Usuario(id: '1', name: 'Mahonri Flores', email: 'Mahonri.Flores@unah.hn'.toLowerCase(), phone: '9999-9999')
 ];
 
 
