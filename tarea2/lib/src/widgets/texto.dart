@@ -9,7 +9,7 @@ class campoTexto extends StatelessWidget {
     required this.prefixicon,
     this.suffixicon,
     this.keyboardType = TextInputType.text,
-    this.obscureText = false,
+    this.obscuretext,
     this.onchanged ,
     this.color = Colors.black
   });
@@ -17,15 +17,16 @@ class campoTexto extends StatelessWidget {
   final String labeltext;
   final String hinttext;
   final IconData prefixicon;
-  final IconData? suffixicon;
+  final suffixicon;
   final TextInputType keyboardType;
-  final bool obscureText;
+  final bool? obscuretext;
   final Function(String)? onchanged;
   final Color color;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      obscureText: obscuretext ?? false,
             controller: controler,
             keyboardType: keyboardType,
                 decoration: InputDecoration(
@@ -33,7 +34,7 @@ class campoTexto extends StatelessWidget {
                   contentPadding: EdgeInsets.all(22),
                   hintText: hinttext,
                   prefixIcon: Icon(prefixicon),
-                  suffixIcon: suffixicon != null ? Icon(suffixicon, color: color,) : null,
+                  suffixIcon: suffixicon != null ? suffixicon : null,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),

@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:tarea2/data/user.dart';
+import 'package:tarea2/src/widgets/texto.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final contraController = TextEditingController();
+
   final emailController = TextEditingController();
+
+  Color colorEmailCheck = Colors.black;
+  bool isPassword = true;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,41 +29,41 @@ class LoginPage extends StatelessWidget {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
               ),
           const SizedBox(height: 20),
-          TextField(
-            controller: emailController,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              labelText: 'Correo',
-              contentPadding: EdgeInsets.all(22),
-              hintText: 'Ingrese su correo',
-              prefixIcon: Icon(Icons.email_outlined),
-              suffixIcon: Icon(Icons.check_circle_outline),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
+          campoTexto(
+                controler: emailController,
+                labeltext: 'Correo Electrónico',
+                prefixicon: Icons.email_outlined,
+                hinttext: 'Ingrese su correo electrónico',
+                keyboardType: TextInputType.emailAddress,
+                suffixicon: Icon(Icons.check_circle_outline, color: colorEmailCheck),
+                onchanged: (value) {
+                  if (validarEmail(value.toLowerCase())) {
+                    colorEmailCheck = Colors.green;
+                  } else {
+                    colorEmailCheck = Colors.red;
+                  }
+                  setState(() {});
+                },
+                color: colorEmailCheck,
               ),
-            ),
-          ),
           const SizedBox(height: 20),
-          TextField(
-                controller: contraController,
-                obscureText: true,
-                keyboardType: TextInputType.visiblePassword,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
+          campoTexto(
+                controler: contraController,
+                labeltext: 'Contraseña',
+                prefixicon: Icons.lock_outline,
+                hinttext: 'Ingrese su contraseña',
+                obscuretext: isPassword,
+                suffixicon: IconButton(
+                  icon: Icon(
+                    isPassword ? Icons.visibility : Icons.visibility_off,
                   ),
-                  contentPadding: EdgeInsets.all(22),
-                  // labelText: 'Holaaa',
-                  label: Text('Ingrese su contraseña'),
-                  hintText: 'Ingrese su contraseña',
-                  prefixIcon: Icon(Icons.password_rounded),
-                  // error: Text('El correo es obligatorio'),
-                  // prefix: Icon(Icons.email_outlined),
-                  suffixIcon: IconButton(
-                    icon: Icon(Icons.remove_red_eye),
-                    onPressed: () {},
-                  ),
+                  onPressed: () {
+                    setState(() {
+                      isPassword = !isPassword;
+                    });
+                  },
                 ),
+                
               ),
           const SizedBox(height: 20),
           ElevatedButton(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tarea2/data/user.dart' show Usuario, agregarUsuario, obtenerUsuarioPorEmail, usuarios, validarEmail;
+import 'package:tarea2/data/user.dart' show Usuario, agregarUsuario, validarEmail;
 import 'package:tarea2/src/widgets/texto.dart';
 
 class RegistroPage extends StatefulWidget {
@@ -55,9 +55,9 @@ class _RegistroPageState extends State<RegistroPage> {
                 prefixicon: Icons.email_outlined,
                 hinttext: 'Ingrese su correo electrónico',
                 keyboardType: TextInputType.emailAddress,
-                suffixicon: Icons.check_circle_outline,
+                suffixicon: Icon(Icons.check_circle_outline, color: colorEmailCheck),
                 onchanged: (value) {
-                  if (validarEmail(value)) {
+                  if (validarEmail(value.toLowerCase())) {
                     colorEmailCheck = Colors.green;
                   } else {
                     colorEmailCheck = Colors.red;
@@ -72,13 +72,18 @@ class _RegistroPageState extends State<RegistroPage> {
                 labeltext: 'Contraseña',
                 prefixicon: Icons.lock_outline,
                 hinttext: 'Ingrese su contraseña',
-                obscureText: isPasswordVisible,
-                suffixicon: isPasswordVisible ? Icons.visibility_off : Icons.visibility,
-                onchanged: (value) {
-                  setState(() {
-                    isPasswordVisible = !isPasswordVisible;
-                  });
-                },
+                obscuretext: isPasswordVisible,
+                suffixicon: IconButton(
+                  icon: Icon(
+                    isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      isPasswordVisible = !isPasswordVisible;
+                    });
+                  },
+                ),
+                
               )
               ,
               const SizedBox(height: 20),
