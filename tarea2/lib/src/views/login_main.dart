@@ -32,11 +32,14 @@ class _LoginMainPageState extends State<LoginMainPage> {
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
+          currentIndex: indice,
+          
           onTap: (index) {
             // Handle navigation logic here
             setState(() {});
-          indice = index;
+            indice = index;
             pageController.jumpToPage(index);
+            
           },
           items: const [
             BottomNavigationBarItem(
