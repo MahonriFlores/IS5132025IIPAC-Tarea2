@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tarea2/data/user.dart';
 import 'package:tarea2/src/views/login_pages/login_page.dart';
 import 'package:tarea2/src/views/login_pages/registro_page.dart';
 
@@ -15,7 +16,7 @@ class _LoginMainPageState extends State<LoginMainPage> {
 
   @override
   Widget build(BuildContext context) {
-    
+    usuarios[0].contra = '20212001077';
     return Scaffold(
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),
@@ -28,7 +29,6 @@ class _LoginMainPageState extends State<LoginMainPage> {
           children: [
              LoginPage(),
              RegistroPage(),
-            
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(

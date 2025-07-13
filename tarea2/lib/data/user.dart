@@ -8,7 +8,7 @@ class Usuario{
 
   Usuario({this.id, this.name, this.email, this.phone});
 
-  set setContra(String contra) {
+  set contra(String contra) {
     _contra = contra;
   }
 
@@ -19,10 +19,10 @@ class Usuario{
 }
 
 List<Usuario> usuarios = [
-  Usuario(id: '1', name: 'Juan Perez', email: 'J.P@unah.hn', phone: '9999-9999'),
-  Usuario(id: '2', name: 'Maria Lopez', email: 'M.L@unah.hn', phone: '8888-8888'),
-  Usuario(id: '3', name: 'Carlos Sanchez', email: 'C.S@unah.hn', phone: '7777-7777')
+  Usuario(id: '1', name: 'Mahonri Flores', email: 'Mahonri.Flores@unah.hn', phone: '9999-9999')
 ];
+
+
 
 bool validarEmail(String email) {
   return email.contains('@unah.hn');
@@ -38,9 +38,6 @@ void agregarUsuario(Usuario usuario) {
   usuarios.add(usuario);
 }
 
-void eliminarUsuarioPorId(String id) {
-  usuarios.removeWhere((usuario) => usuario.id == id);
-}
 
 void actualizarUsuario(Usuario usuarioActualizado) {
   int index = usuarios.indexWhere((usuario) => usuario.id == usuarioActualizado.id);

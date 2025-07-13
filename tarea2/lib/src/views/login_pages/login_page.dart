@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tarea2/data/user.dart';
 import 'package:tarea2/src/widgets/texto.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({super.key});
@@ -69,6 +70,19 @@ class _LoginPageState extends State<LoginPage> {
           ElevatedButton(
             onPressed: () {
               // Handle login logic
+              if (!validarEmail(emailController.text.toLowerCase())){
+                return;
+              }
+              if (contraController.text.isEmpty) {
+                return;
+              }
+
+              usuarios.forEach((usuario){
+                if (usuario.email == emailController.text.toLowerCase() &&
+                    usuario.compararContra(contraController.text)) {
+                  context.go('/Home');
+                }
+              });
             },
             child: const Text('Entrar'),
           ),

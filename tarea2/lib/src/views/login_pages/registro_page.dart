@@ -145,7 +145,7 @@ class _RegistroPageState extends State<RegistroPage> {
                     phone: numeroController.text,
                   );
                   
-                  nuevo.setContra = contraController.text;
+                  nuevo.contra = contraController.text;
                   agregarUsuario(nuevo);
                   nombreController.clear();
                   numeroController.clear();
