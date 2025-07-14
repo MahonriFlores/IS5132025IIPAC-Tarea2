@@ -16,6 +16,7 @@ class _RegistroPageState extends State<RegistroPage> {
   final contraController = TextEditingController();
   bool isPasswordVisible = true;
   Color colorEmailCheck = Colors.black;
+  Color borderColor = Colors.red;
   
 
   @override
@@ -107,6 +108,19 @@ class _RegistroPageState extends State<RegistroPage> {
                           });
                         },
                       ),
+                      bordercolor: borderColor,
+                      onchanged: (value) {
+                          
+                          setState(() {
+                            if (contraController.text.length < 6) {
+                            borderColor = Colors.red;
+                          } else {
+                            borderColor = Colors.green;
+                          }
+                          });
+                          // Aquí puedes agregar lógica para validar la contraseña si es necesario
+                        },
+                        keyboardType: TextInputType.visiblePassword,
                       
                     )
                     ,

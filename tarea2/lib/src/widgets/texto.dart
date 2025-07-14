@@ -11,7 +11,8 @@ class campoTexto extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.obscuretext,
     this.onchanged ,
-    this.color = Colors.black
+    this.color = Colors.black,
+    this.bordercolor = Colors.green,
   });
   final TextEditingController controler;
   final String labeltext;
@@ -22,6 +23,7 @@ class campoTexto extends StatelessWidget {
   final bool? obscuretext;
   final Function(String)? onchanged;
   final Color color;
+  final Color bordercolor;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,7 @@ class campoTexto extends StatelessWidget {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),
                     borderSide: BorderSide(
-                      color: Colors.green,
+                      color: bordercolor,
                       width: 2.0,
                     ),
                   ),

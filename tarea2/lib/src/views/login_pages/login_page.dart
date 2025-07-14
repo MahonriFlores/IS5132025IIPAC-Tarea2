@@ -18,6 +18,7 @@ class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
 
   Color colorEmailCheck = Colors.black;
+  Color borderColor = Colors.red;
   bool isPassword = true;
 
   @override
@@ -79,6 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                         prefixicon: Icons.lock_outline,
                         hinttext: 'Ingrese su contraseña',
                         obscuretext: isPassword,
+                        bordercolor: borderColor,
                         suffixicon: IconButton(
                           icon: Icon(
                             isPassword ? Icons.visibility : Icons.visibility_off,
@@ -90,6 +92,17 @@ class _LoginPageState extends State<LoginPage> {
                             });
                           },
                         ),
+                        onchanged: (value) {
+                          
+                          setState(() {
+                            if (contraController.text.length < 6) {
+                            borderColor = Colors.red;
+                          } else {
+                            borderColor = Colors.green;
+                          }
+                          });
+                          // Aquí puedes agregar lógica para validar la contraseña si es necesario
+                        },
                         keyboardType: TextInputType.visiblePassword,
                       ),
                   const SizedBox(height: 20),
