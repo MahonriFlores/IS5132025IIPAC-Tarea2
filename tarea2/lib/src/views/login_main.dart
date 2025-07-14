@@ -27,7 +27,8 @@ class _LoginMainPageState extends State<LoginMainPage> {
               alignment: Alignment.center,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('./lib/src/utils/background.jpg'),
+                  image: AssetImage('./lib/src/utils/background.jpg'), 
+                  fit: BoxFit.cover
                   
                 ),
               ),

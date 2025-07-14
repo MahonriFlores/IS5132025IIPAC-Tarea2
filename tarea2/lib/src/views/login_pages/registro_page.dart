@@ -29,6 +29,7 @@ class _RegistroPageState extends State<RegistroPage> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('./lib/src/utils/background.jpg'),
+            fit: BoxFit.cover
             ),
           ),
         child: Column(
