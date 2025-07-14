@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:tarea2/data/user.dart';
 import 'package:tarea2/src/widgets/texto.dart';
@@ -5,7 +7,7 @@ import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({super.key}){
-    usuarios[0].contra = '20212001077';
+    usuarios[0].contra = '+20212001077';
   }
 
   @override
@@ -17,6 +19,8 @@ class _LoginPageState extends State<LoginPage> {
 
   final emailController = TextEditingController();
 
+  List<String> especialChars = ['@', '.', '_', '-', '+', '!', '#', '\$', '%', '^', '&', '*', '(', ')', '=', '{', '}', '[', ']', ':', ';', '"', "'", '<', '>', '?', '/', '\\'];
+  bool hasSpecialChar = false;
   Color colorEmailCheck = Colors.black;
   Color borderColor = Colors.red;
   bool isPassword = true;
@@ -95,7 +99,16 @@ class _LoginPageState extends State<LoginPage> {
                         onchanged: (value) {
                           
                           setState(() {
-                            if (contraController.text.length < 6) {
+                            for (String char in especialChars) {
+                              if (contraController.text.contains(char)) {
+                                print('Caracter especial encontrado: $char');
+                                hasSpecialChar = true;
+                                break;
+                              } else {
+                                hasSpecialChar = false;
+                              }
+                            }
+                            if (contraController.text.length < 6 || hasSpecialChar == false) {
                             borderColor = Colors.red;
                           } else {
                             borderColor = Colors.green;
@@ -108,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 20),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      fixedSize: const Size( 300 , 40),
+                      // fixedSize: Size( 300 , 40),
                       backgroundColor: Colors.white,
                       foregroundColor: Colors.black,
                       shape: RoundedRectangleBorder(
@@ -128,9 +141,11 @@ class _LoginPageState extends State<LoginPage> {
                         );
                         return;
                       }
-                      if (contraController.text.isEmpty || contraController.text.length < 6) {
+                      
+                      
+                      if (contraController.text.isEmpty || contraController.text.length < 6 || hasSpecialChar == false)  {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(backgroundColor: Colors.red,content: Text('Contraseña debe tener al menos 6 caracteres', style: TextStyle(color: Colors.black),)), snackBarAnimationStyle: AnimationStyle(
+                          SnackBar(backgroundColor: Colors.red,content: Text('Contraseña debe tener al menos 6 caracteres y almenos un caracter especial', style: TextStyle(color: Colors.black),)), snackBarAnimationStyle: AnimationStyle(
                             curve: Curves.easeInOut,
                             duration: Duration(seconds: 2),
                             reverseDuration: Duration(seconds: 2),
