@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tarea2/src/views/home_page.dart';
 import 'package:tarea2/src/views/login_main.dart';
+import 'package:tarea2/src/views/login_pages/login_page.dart';
+import 'package:tarea2/src/views/login_pages/registro_page.dart';
 
 
 void main() {
@@ -17,12 +19,22 @@ class MainApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: 
         GoRouter(
-          initialLocation: '/login',
-          routes: [
+          initialLocation: '/',
+          routes: [ 
+            GoRoute(
+              name: '/',
+              path: '/',
+              builder: (context, state) => const LoginMainPage(),
+            ),
             GoRoute(
               name: 'login',
               path: '/login',
-              builder: (context, state) => const LoginMainPage(),
+              builder: (context, state) =>  LoginPage(),
+            ),
+            GoRoute(
+              name: 'registro',
+              path: '/registro',
+              builder: (context, state) => RegistroPage(),
             ),
             GoRoute(
               name: 'home',

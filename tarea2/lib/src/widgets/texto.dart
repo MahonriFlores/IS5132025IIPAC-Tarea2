@@ -30,13 +30,31 @@ class campoTexto extends StatelessWidget {
             controller: controler,
             keyboardType: keyboardType,
                 decoration: InputDecoration(
+                  hoverColor: Colors.greenAccent[100],
+                  labelStyle: TextStyle(
+
+                    color: color,
+                  ),
                   labelText: labeltext,
                   contentPadding: EdgeInsets.all(22),
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
+                    borderSide: BorderSide(
+                      color: Colors.green,
+                      width: 2.0,
+                    ),
+                  ),
                   hintText: hinttext,
                   prefixIcon: Icon(prefixicon),
-                  suffixIcon: suffixicon != null ? suffixicon : null,
+                  suffixIcon: suffixicon,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),
+                    borderSide: BorderSide(
+                      color: Colors.green,
+                      width: 1.0,
+                    ),
                   ),
                 ),
             onChanged: onchanged,
