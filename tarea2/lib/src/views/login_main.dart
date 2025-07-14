@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tarea2/src/views/login_pages/login_page.dart';
-import 'package:tarea2/src/views/login_pages/registro_page.dart';
 
 class LoginMainPage extends StatefulWidget {
   const LoginMainPage({super.key});

@@ -86,10 +86,11 @@ class _LoginPageState extends State<LoginPage> {
                           onPressed: () {
                             setState(() {
                               isPassword = !isPassword;
+
                             });
                           },
                         ),
-                        
+                        keyboardType: TextInputType.visiblePassword,
                       ),
                   const SizedBox(height: 20),
                   ElevatedButton(
@@ -114,7 +115,15 @@ class _LoginPageState extends State<LoginPage> {
                         );
                         return;
                       }
-                      if (contraController.text.isEmpty) {
+                      if (contraController.text.isEmpty || contraController.text.length < 6) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(backgroundColor: Colors.red,content: Text('Contraseña debe tener al menos 6 caracteres', style: TextStyle(color: Colors.black),)), snackBarAnimationStyle: AnimationStyle(
+                            curve: Curves.easeInOut,
+                            duration: Duration(seconds: 2),
+                            reverseDuration: Duration(seconds: 2),
+                      
+                          )
+                        );
                         return;
                       }
                       
